@@ -1,7 +1,7 @@
 {
-  "name": "fastify-jaeger-middleware",
-  "version": "1.0.0",
-  "description": "Jaeger middleware for fastify web server",
+  "name": "@3rdi/fastify-jaeger-middleware",
+  "version": "0.2.1",
+  "description": "Jaeger middleware for fastify",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,8 +13,8 @@
   "author": "3rdi ltd",
   "homepage": "https://github.com/3rdi-ai/fastify-jaeger-middleware#readme",
   "license": "MIT",
-  "dependencies": {
-    "fastify-plugin": "^1.3.0",
-    "jaeger-client": "^3.13.0"
+  "peerDependencies": {
+    "jaeger-client": "^3.13.0",
+    "fastify-plugin": "^1.3.0"
   }
 }

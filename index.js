@@ -1,5 +1,5 @@
 const fp = require('fastify-plugin');
-const { opentracing } = require('jaeger-client');
+const { Tags } = require('jaeger-client').opentracing;
 
 function fastifyJaeger(fastify, opts, next) {
   const { tracer } = Object.assign(
@@ -17,9 +17,9 @@ function fastifyJaeger(fastify, opts, next) {
     const { headers } = request;
     const ctx = tracer.extract('http_headers', Object.setPrototypeOf(headers, Object.prototype));
     const span = tracer.startSpan(extractFunctionName(request.headers[':path']), { childOf: ctx });
-    span.setTag(opentracing.Tags.SPAN_KIND, 'server');
-    span.setTag(opentracing.Tags.HTTP_METHOD, request.headers[':method']);
-    span.setTag(opentracing.Tags.HTTP_URL, request.headers[':path']);
+    span.setTag(Tags.SPAN_KIND, 'server');
+    span.setTag(Tags.HTTP_METHOD, request.headers[':method']);
+    span.setTag(Tags.HTTP_URL, request.headers[':path']);
 
     request.trace = span;
     traceNext();
@@ -27,15 +27,15 @@ function fastifyJaeger(fastify, opts, next) {
 
   function traceResponse(request, reply, responseNext) {
     const span = request.trace;
-    span.setTag(opentracing.Tags.HTTP_STATUS_CODE, reply.res.statusCode);
+    span.setTag(Tags.HTTP_STATUS_CODE, reply.res.statusCode);
     span.finish();
     responseNext();
   }
 
   function traceError(request, reply, error, errorNext) {
     const span = request.trace;
-    span.setTag(opentracing.Tags.HTTP_STATUS_CODE, reply.res.statusCode);
-    span.setTag(opentracing.Tags.ERROR, true);
+    span.setTag(Tags.HTTP_STATUS_CODE, reply.res.statusCode);
+    span.setTag(Tags.ERROR, true);
     span.finish();
     errorNext();
   }
