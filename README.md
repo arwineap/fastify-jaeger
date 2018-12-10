@@ -35,9 +35,9 @@ var tracer = initTracer(config, options);
 Then register the middleware and instantiate this with the tracer.
 
 ```js
-const jegerMiddleware = require('@3rdi/fastify-jaeger-middleware');
+const jaegerMiddleware = require('@3rdi/fastify-jaeger-middleware');
 
- fastify.register(jegerMiddleware, { tracer: jaegerTracer });
+ fastify.register(jaegerMiddleware, { tracer: jaegerTracer });
  
 ```
 This will give you a report in jaeger like this.
