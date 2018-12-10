@@ -42,7 +42,7 @@ const jegerMiddleware = require('@3rdi/fastify-jaeger-middleware');
 ```
 This will give you a report in jaeger like this.
 
-
+![alt text](https://github.com/3rdi-ai/fastify-jaeger-middleware/blob/master/img/jaeger%20example.png)
 
 ## License
 
