@@ -1,5 +1,5 @@
 # fastify-jaeger-middleware
-
+[![Build Status](https://3rdi.visualstudio.com/Prophesee/_apis/build/status/Helpers/fastify-jaeger-middleware)](https://3rdi.visualstudio.com/Prophesee/_build/latest?definitionId=16)
 ## Install
 ```
 npm i @3rdi/fastify-jaeger-middleware --save
