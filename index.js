@@ -13,11 +13,11 @@ function fastifyJaeger(fastify, opts, next) {
   function extractFunctionName(path) {
     // const destPath = path.split('/');
     // return destPath[destPath.length - 1].split('?')[0];
-    console.log(path)
     return 'foo'
   }
 
   function traceRequest(request, reply, traceNext) {
+    console.log(request);
     const { headers } = request;
     const ctx = tracer.extract('http_headers', Object.setPrototypeOf(headers, Object.prototype));
     const span = tracer.startSpan(extractFunctionName(request.headers[':path']), { childOf: ctx });
