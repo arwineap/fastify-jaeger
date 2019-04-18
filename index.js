@@ -11,8 +11,10 @@ function fastifyJaeger(fastify, opts, next) {
     opts,
   );
   function extractFunctionName(path) {
-    const destPath = path.split('/');
-    return destPath[destPath.length - 1].split('?')[0];
+    // const destPath = path.split('/');
+    // return destPath[destPath.length - 1].split('?')[0];
+    console.log(path)
+    return 'foo'
   }
 
   function traceRequest(request, reply, traceNext) {
